@@ -20,9 +20,10 @@ unsigned int get_number_of_lines(FILE * fp)
     unsigned int lines = 0;
     int ch ;
 
-    while(!feof(fp))
+    // while(!feof(fp))      // can cause error by having fp as EOF but this statement still reads EOF and hence may give error, better is to use below statement
+    while((ch = fgetc(cp)) != EOF)
     {
-      ch = fgetc(fp);
+      // ch = fgetc(fp);
       if(ch == '\n')
       {
         lines++;
